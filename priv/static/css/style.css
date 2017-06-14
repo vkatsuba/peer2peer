@@ -1,0 +1,411 @@
+textarea:focus, input:focus {
+  outline: none;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    background: #000;
+}
+
+/* Remove mirror behavior image of the video */
+video{
+	transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-ms-transform: scaleX(-1);
+	-moz-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+}
+
+.main {
+	position: fixed;
+	top: 0; 
+	right: 0; 
+	bottom: 0; 
+	left: 0;
+	overflow: hidden;
+}
+
+.main > video#remoteVideo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%; 
+	min-height: 100%;
+	width: auto; 
+	height: auto;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .main > video#remoteVideo { 
+    height: 100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .main > video#remoteVideo { 
+    width: 100%;
+  }
+}
+
+@supports (object-fit: cover) {
+  .main > video#remoteVideo {
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+video#localVideo {
+  margin-left: 0;
+  z-index: 1;
+  position: absolute;
+  width: 20%;
+  top: 0;
+  right: 0;
+}
+
+#chat_area {
+	height: 100%;
+	padding: 10px 10px 250px 10px;
+	overflow: auto;
+}
+
+.font {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+
+.chat-input {
+	height: 250px;
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.search-query {
+	padding: 10px;
+	width: 100%;
+	resize: none;
+  box-shadow: 0px 0px 10px 1px;
+  border-left: none;
+  border-left: none;
+  border-right: none;
+  border-top: 5px solid #f5f5f5;
+}
+
+#div_chat_input {
+	display: table;
+}
+
+#chat_submit_btn {
+	background: #444;
+	color: #fff;
+	margin: 0;
+}
+
+#chat_submit_btn:hover {
+	cursor: pointer;
+	color: #444;
+	background: none;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.btn-row span {
+	margin: 0;
+  color: #fff;
+  background-color: #444;
+  cursor: pointer;
+  border-radius: 100%;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+
+.btn-row span:hover {
+  background: none;
+  color: #444;
+  fill: #444;
+}
+
+.btn-row {
+	width: 100%;
+	display: table;
+  margin-top: 15px;
+}
+
+.send-progress {
+	display: table;
+	padding: 15px;
+	background: rgb(250,250,250);
+	margin-top: 15px;
+}
+
+
+div.label {
+  display: inline-block;
+  font-size: 16px;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  width: 9.2em;
+}
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    display: block;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border-left: 5px solid #444;
+  }
+}
+
+/* Sidebar navigation */
+
+.nav-sidebar {
+  margin-right: -21px;
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {}
+
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+.main .page-header {
+  margin-top: 0;
+}
+
+.attach-data {
+	float: left;
+  text-align: left;
+}
+
+.send-data{
+	float: right;
+  text-align: right;
+}
+
+.attach-data, .send-data, .progress {}
+
+.progress{
+  width: 100%;
+  margin-top: 15px;
+}
+
+.btn-row .glyphicon-paperclip, .btn-row .glyphicon-send {
+	top: 0;
+	line-height: inherit;
+	border-radius: 100%;
+	padding: 10px 15px;
+	font-size: 21px;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+
+.msg-wrap {
+  display: table;
+  width: 100%;
+  margin: 15px 0px;
+}
+
+.link-to-remote-connect, .remote-msg {
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  background: #fff;
+  float: left;
+  box-shadow: 5px 0px 10px 1px #a9a9a9;
+  position: relative;
+  color: #888;
+}
+
+.link-to-remote-connect.time, .remote-msg.time {
+	float: left;
+  background: none;
+  width: 40px;
+  float: right;
+  background: none;
+  padding: 10px 0px;
+  text-align: right;
+  font-size: 10px;
+  box-shadow: none;
+}
+
+.link-to-remote-connect:after, .remote-msg:after {
+  border-color: transparent #fff;
+  border-width: 10px 0 0 20px;
+  border-style: solid;
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 10px;
+}
+
+.link-to-remote-connect.time:after, .remote-msg.time:after {
+  border: none;
+}
+
+.local-msg, .local-msg.time {
+  color: #444;
+}
+
+.local-msg.time {
+  float: left;
+  background: none;
+  width: 40px;
+  float: left;
+  background: none;
+  padding: 10px 0px;
+  text-align: left;
+  font-size: 10px;
+  box-shadow: none;
+}
+
+.local-msg {
+  float: right;
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  background: #e6e6e6;
+  box-shadow: 5px 0px 10px 1px #a9a9a9;
+  position: relative;
+}
+
+.local-msg:after {
+  border-color: transparent #e6e6e6 ;
+  border-width: 10px 20px 0px 0px;
+  border-style: solid;
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 10px;
+}
+
+.local-msg.time:after {
+  border: none;
+}
+
+.progress-bar {
+  transition: none;
+}
+
+.copyright {
+  font-size: 10px;
+  color: #888;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-right: 15px;  
+}
+
+.control-panel-wrap {
+  position: absolute;
+  width: 100%;
+  bottom: 15px;
+  left: 0;
+}
+
+.control-panel {
+  display: table;
+  width: 300px;
+  margin: auto;
+}
+
+.control-panel div {
+  float: left;
+  text-align: center;
+}
+
+.control-panel div:hover {
+  cursor: pointer;
+}
+
+.glyphicon-facetime-video, .glyphicon-volume-off, .glyphicon-resize-full{
+  line-height: inherit;
+  border-radius: 100%;
+  padding: 10px 15px;
+  font-size: 21px;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.glyphicon-facetime-video:hover, .glyphicon-volume-off:hover, .glyphicon-resize-full:hover {
+  color: #fff;
+  border-color: #444;
+  background-color: #444;
+}
+
+.red {
+  color: #a94442;
+  border-color: #a94442;
+}
+
+.red:hover {
+  color: #fff;
+  border-color: #a94442;
+  background-color: #a94442;
+}
