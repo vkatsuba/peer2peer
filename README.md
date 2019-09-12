@@ -19,9 +19,9 @@ $ make clean
 
 ## Documentation
 * Before run this project need to install **Erlang/OTP 20+** and **Rebar 3**
-* Then go to the [https://localhost:8080](https://localhost:8080) eg. in Mozilla
+* Then go to the [https://localhost:8000](https://localhost:8000) eg. in Mozilla
 * Then mute video and microphone
-* Then copy the link what provided in window of [https://localhost:8080](https://localhost:8080) and past the URL eg. in Chrome
+* Then copy the link what provided in window of [https://localhost:8000](https://localhost:8000) and past the URL eg. in Chrome
 * Try send simple message
 * Try send file
 
