@@ -1,0 +1,6 @@
+-sname peer2peer
+
+-setcookie peer2peer_cookie
+
++K true
++A30

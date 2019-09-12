@@ -1,20 +1,24 @@
 # peer2peer
-The project peer2peer still into development, and coming soon will be available on [peer2peer.pro](http://peer2peer.pro)
+The **peer2peer** is a small example of peer to peer web service of one to one conference
 
 ## Goals
-The peer2peer provide quick communications with two users, without saving any informations about user history or what data was received.
-
-The peer2peer does not require any information or authorisation from users, than keeps anonymity.
+The **peer2peer** aims to provide a simple quick communications with two users, without saving any informations about user history or what data was received.
+The **peer2peer** does not require any information or authorisation from users, than keeps anonymity.
 
 ## Documentation
-* Install Erlang if don't have it on your machine.
+* Install **Erlang/OTP 20+**
+* Install **Rebar 3**
 * For running this project in local machine, please use next steps:
   ```
   $ git clone https://github.com/vkatsuba/peer2peer.git
   $ cd peer2peer
-  $ make run
+  $ make
   ```
-* Then go to the [localhost:8080](http://localhost:8080)
+* Then go to the [https://localhost:8080](https://localhost:8080) eg. in Mozilla
+* Then mute video and microphone
+* Then copy the link what provided in window of [https://localhost:8080](https://localhost:8080) and past the URL eg. in Chrome
+* Try send simple message
+* Try send file
 
 ## Support
-If you find any issue or have any suggestions, please send letter to v.katsuba.dev@gmail.com
+v.katsuba.dev@gmail.com

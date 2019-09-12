@@ -14,7 +14,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 var settings = {
     localVideo: document.getElementById('localVideo'),
     remoteVideo: document.getElementById('remoteVideo'),
-    signallingServer: 'ws://localhost:8080/ws',
+    signallingServer: 'wss://localhost:8000/ws',
     iceServers: {"iceServers": [{url:'stun:23.21.150.121'}, {url:'stun:stun.l.google.com:19302'}]},
     mediaParameterAudio: true,
     mediaParameterVideo: true,
@@ -61,14 +61,16 @@ function errorCallBack(error) {
 
 // Attach media stream
 function attachMediaStream(element, stream) {
-    if (isMoz) {
-        element.mozSrcObject = stream;
-        element.play();
-    } else if (isWebkit) {
-        element.src = window.URL.createObjectURL(stream);
-    }
+  try {
+    element.srcObject = stream;
+  } catch (error) {
+    element.src = window.URL.createObjectURL(stream);
+    video.onloadedmetadata = function(e) {
+       video.play();
+     };
+  }
 
-    streamData.push(stream);
+  streamData.push(stream);
 }
 
 // Init channel
@@ -132,7 +134,7 @@ function sendChannelMessage(message) {
         onRoomReceived(settings.room);
     } else if (msg.type === 'WRONGROOM') {
         window.location.href = "/";
-    } 
+    }
 }
 
 // Do call if user media success
@@ -223,7 +225,7 @@ function onRoomReceived(room) {
     a.innerHTML  = url;
     p.appendChild(text);
     p.appendChild(a);
-    
+
     addChatTxt(p.innerHTML, settings.chatColorRemoteText, settings.classLinkToRemote, true);
 }
 
@@ -263,7 +265,7 @@ function addChatTxt(msg, msgColor, msgClass, innerHTML) {
 
     divMsg.setAttribute('class', msgClass);
     if (innerHTML) {
-        divMsg.innerHTML = msg;       
+        divMsg.innerHTML = msg;
     } else {
         divMsg.innerText = msg;
     }
@@ -314,14 +316,20 @@ function sendFileMsg(event){
 
                 reader.onload = (function() {
                     return function(e) {
-                        receiveBuffer.push(e.target.result);  
+                        receiveBuffer.push(e.target.result);
 
                         if (file.size > offset + e.target.result.byteLength) {
                           window.setTimeout(sliceFile, 0, offset + chunkSize);
                         } else{
-                            var received = new window.Blob(receiveBuffer),
-                                blobURL = window.URL.createObjectURL(received),
-                                msg = JSON.stringify({"type" : "file", "name" : file.name, "size" : file.size, "data" : blobURL});
+                            var received = new window.Blob(receiveBuffer);
+
+                            try {
+                              var blobURL = received;
+                            } catch (error) {
+                              var blobURL = window.URL.createObjectURL(received);
+                            }
+
+                            msg = JSON.stringify({"type" : "file", "name" : file.name, "size" : file.size, "data" : blobURL});
 
                             sendMessage({"type" : "CHATMSGFILE", "value" : msg});
                             onFileReceived(file.name, file.size, blobURL, settings.chatColorLocalText, settings.msgClassLocal);
@@ -377,7 +385,7 @@ function hookEnter(event) {
         event.preventDefault();
 
         sendChatMsg();
-    }    
+    }
 }
 
 // --------------------------------------------------------------------------------------------

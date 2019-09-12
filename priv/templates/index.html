@@ -2,8 +2,8 @@
 <html>
 	<head>
 	    <title>Peer-to-peer chat</title>
-	    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	    <link rel="stylesheet" type="text/css" href="../css/style.css">
+	    <link rel="stylesheet" type="text/css" href="../www/css/bootstrap.min.css">
+	    <link rel="stylesheet" type="text/css" href="../www/css/style.css">
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -11,7 +11,7 @@
 				<div class="col-sm-9 col-md-9 main">
 				    <video autoplay="autoplay" id="localVideo" muted="true"></video>
 				    <video autoplay="autoplay" id="remoteVideo"></video>
-					
+
 					<div class="control-panel-wrap">
 						<div class="control-panel">
 						    <div class="video col-md-4">
@@ -28,15 +28,15 @@
 			    </div>
 
 				<div class="col-md-3 col-md-offset-9 sidebar">
-				    <div id="chat_area"></div>	
+				    <div id="chat_area"></div>
 
 					<div class="chat-input">
 						<textarea rows="5" name="text" class="search-query" placeholder="Input text here ..." name="msgline" id="chat_input"></textarea>
 
 						<output id="list"></output>
-						
+
 					    <input type="file" class="inputfile" id="files" name="file" multiple />
-			    					    			   
+
 					    <div class="btn-row">
 					    	<div class="attach-data col-md-3">
 							    <label for="files">
@@ -57,13 +57,13 @@
 					    <div id="file_load_status"></div>
 
 						<div class="copyright">
-							<p>&copy; 2017 V. Katsuba - <a href="https://github.com">GitHub</a></p>
+							<p>&copy; 2017 - 2019 V. Katsuba - <a href="https://github.com/vkatsuba/peer2peer">GitHub</a></p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<script type="text/javascript" src="../js/webRtcApp.js"></script>
+
+		<script type="text/javascript" src="../www/js/webRtcApp.js"></script>
 	</body>
 </html>

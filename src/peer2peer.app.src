@@ -1,0 +1,20 @@
+{application, peer2peer,
+ [{description, "Peer To Peer"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, { peer2peer_app, []}},
+  {applications,
+   [kernel,
+    stdlib,
+    cowboy,
+    jiffy,
+    gproc,
+    inets
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {maintainers, []},
+  {licenses, ["MIT"]},
+  {links, []}
+ ]}.
