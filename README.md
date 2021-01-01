@@ -1,5 +1,5 @@
 # peer2peer
-The **peer2peer** is a small example of peer to peer web service of one to one conference
+The **peer2peer** is a small example of peer to peer web service of one to one conference.
 
 # Goals
 The **peer2peer** aims to provide a simple quick communications with two users, without saving any informations about user history or what data was received.
