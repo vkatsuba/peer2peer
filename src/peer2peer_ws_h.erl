@@ -38,12 +38,12 @@ websocket_init(State) ->
 %% @end
 %% -------------------------------------------------------------------
 websocket_handle({text, Data}, State) ->
-	JsonTerm = jiffy:decode(Data, [return_maps]),
+	JsonTerm = jsx:decode(Data, [{return_maps, true}]),
 	Type = maps:get(<<"type">>, JsonTerm, undefined),
 	case Type of
 		<<"GETROOM">> ->
 			Room = rand:uniform(999999),
-			DataRoom = jiffy:encode(#{<<"type">> => <<"GETROOM">>, <<"value">> => Room}),
+			DataRoom = jsx:encode(#{<<"type">> => <<"GETROOM">>, <<"value">> => Room}),
 			gproc:reg({p,l, Room}),
 			{reply, {text, <<DataRoom/binary>>}, [#{room => Room}], hibernate};
 		<<"ENTERROOM">> ->
@@ -54,7 +54,7 @@ websocket_handle({text, Data}, State) ->
 					gproc:reg({p, l, Room}),
 					{ok, [#{room => Room}], hibernate};
 				_ ->
-					DataRoom = jiffy:encode(#{<<"type">> => <<"WRONGROOM">>}),
+					DataRoom = jsx:encode(#{<<"type">> => <<"WRONGROOM">>}),
 					{reply, {text, <<DataRoom/binary>>}, State, hibernate}
 			end;
 		_ ->

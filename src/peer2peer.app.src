@@ -7,7 +7,7 @@
    [kernel,
     stdlib,
     cowboy,
-    jiffy,
+    jsx,
     gproc,
     inets
    ]},
